@@ -1,0 +1,37 @@
+<mvc:View
+  controllerName="sap.ui.user.frontend.controller.App"
+  xmlns="sap.m"
+  xmlns:mvc="sap.ui.core.mvc">
+  <App class="userFrontend">
+    <pages>
+      <Page title="Users">
+        <content>
+          <Panel
+            headerText="List of users"
+            class="sapUiResponsiveMargin"
+            width="auto">
+            <content>
+              <List 
+                id="userList"
+                width="auto"
+                items="{users>/}">
+                <ObjectListItem
+                  title="{users>email}"
+                  type="Active"
+                  press="onOpenDialog"
+                  number="{
+                  parts:[{path: 'users>firstName'}, {path: 'users>lastName'}]
+                  }"
+                  >
+                  <firstStatus>
+                    <ObjectStatus id="userRole" text="{users>role}" />
+                  </firstStatus>
+                </ObjectListItem>
+              </List>
+            </content>
+          </Panel>
+        </content>
+      </Page>
+    </pages>
+  </App>
+</mvc:View>

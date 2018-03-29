@@ -1,0 +1,44 @@
+{
+  "_version": "1.8.0",
+  "sap.app": {
+    "id": "sap.ui.user.frontend",
+    "type": "application",
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "dataSources": {
+      "user": {
+        "uri": "http://localhost:8081/api/users/get",
+        "type": "JSON"
+      }
+    }
+
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "rootView": {
+      "viewName": "sap.ui.user.frontend.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "app"
+    },
+    "dependencies": {
+      "minUI5Version": "1.30",
+      "libs": {
+        "sap.m": {}
+      }
+    },
+    "models": {
+      "users": {
+        "dataSource": "user"
+      }
+    }
+  }
+}

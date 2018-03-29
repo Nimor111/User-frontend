@@ -1,0 +1,44 @@
+<core:FragmentDefinition
+  xmlns="sap.m"
+  xmlns:core="sap.ui.core">
+  <Dialog
+    id="userDialog"
+    title="Hello {singleUser>/firstName} {singleUser>/lastName}">
+    <content>
+      <Input
+        value="{singleUser>/firstName}"
+        valueLiveUpdate="true"
+        width="60%"
+        class="sapUiResponsiveMargin"
+        />
+      <Input
+        value="{singleUser>/lastName}"
+        valueLiveUpdate="true"
+        width="60%"
+        class="sapUiResponsiveMargin"
+        />
+      <Input
+        value="{singleUser>/role}"
+        valueLiveUpdate="true"
+        width="60%"
+        class="sapUiResponsiveMargin"
+        />
+      <Input
+        value="{singleUser>/password}"
+        valueLiveUpdate="true"
+        width="60%"
+        class="sapUiResponsiveMargin"
+        />
+    </content>
+    <beginButton>
+      <Button
+        text="Close"
+        press="onCloseDialog" />
+    </beginButton>
+    <endButton>
+      <Button
+        text="Submit"
+        press="onSubmitForm" />
+    </endButton>
+  </Dialog>
+</core:FragmentDefinition>
