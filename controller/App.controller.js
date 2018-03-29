@@ -34,7 +34,6 @@ sap.ui.define(
         }
 
         this.getView().setModel(oViewModel, 'singleUser');
-        console.log(oDialog);
         oDialog.open();
       },
 
@@ -45,11 +44,8 @@ sap.ui.define(
       },
 
       onSubmitForm: function() {
-        console.log(this.getView().getModel('singleUser'));
-
         const oView = this.getView();
         const oModel = oView.getModel('singleUser');
-        console.log(oModel.getData());
         const oDialog = oView.byId('userDialog');
 
         $.ajax({
