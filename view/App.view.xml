@@ -11,6 +11,9 @@
             class="sapUiResponsiveMargin"
             width="auto">
             <content>
+              <Button
+                text="Add User"
+                press="onOpenCreateDialog"/>
               <List 
                 id="userList"
                 width="auto"

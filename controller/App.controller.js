@@ -43,27 +43,99 @@ sap.ui.define(
           .close();
       },
 
+      onClosePostDialog: function() {
+        this.getView()
+          .byId('createDialog')
+          .close();
+      },
+
       onSubmitForm: function() {
         const oView = this.getView();
         const oModel = oView.getModel('singleUser');
         const oDialog = oView.byId('userDialog');
+        const data = oModel.getData();
+
+        if (data.password == '') {
+          sap.m.MessageToast.show('Please fill in a password!');
+          return;
+        }
 
         $.ajax({
           type: 'PUT',
           url: 'http://localhost:8081/api/users/update',
           dataType: 'json',
-          data: JSON.stringify(oModel.getData()),
+          data: JSON.stringify(data),
           contentType: 'application/json; charset=utf-8',
           success: function() {
             sap.m.MessageToast.show('User Updated');
             oDialog.close();
-            oView.getModel().refresh(true);
+            console.log(oView.getModel('users'));
+            oView.getModel('users').refresh();
+            console.log(oView.getModel('users'));
           },
 
           error: function() {
-            sap.m.MessageToast.show('Error while updating');
+            sap.m.MessageToast.show('Error during update!');
           },
         });
+      },
+
+      onSubmitPostForm: function() {
+        const oView = this.getView();
+        const oModel = oView.getModel('newUser');
+        const oDialog = oView.byId('createDialog');
+        const data = oModel.getData();
+
+        data.role = this.getView()
+          .byId('selectRole')
+          .getSelectedItem()
+          .getProperty('text');
+
+        if (data.email == '') {
+          sap.m.MessageToast.show('Input an email!');
+          return;
+        }
+
+        $.ajax({
+          type: 'POST',
+          url: 'http://localhost:8081/api/users/create',
+          dataType: 'json',
+          data: JSON.stringify(data),
+          contentType: 'application/json; charset=utf-8',
+          success: function() {
+            sap.m.MessageToast.show('User created');
+            oDialog.close();
+            console.log(oView.getModel('users'));
+            oView.getModel('users').refresh();
+            console.log(oView.getModel('users'));
+          },
+
+          error: function() {
+            sap.m.MessageToast.show('Error during creation!');
+          },
+        });
+      },
+
+      onOpenCreateDialog: function() {
+        const oViewModel = new JSONModel({
+          firstName: '',
+          lastName: '',
+          email: '',
+          role: '',
+        });
+        let oView = this.getView();
+        let oDialog = this.byId('createDialog');
+        if (!oDialog) {
+          oDialog = sap.ui.xmlfragment(
+            oView.getId(),
+            'sap.ui.user.frontend.view.fragment.CreateDialog',
+            this,
+          );
+          oView.addDependent(oDialog);
+        }
+
+        this.getView().setModel(oViewModel, 'newUser');
+        oDialog.open();
       },
     });
   },
