@@ -27,12 +27,14 @@
         <Label
           text="Role"
           class="sapUiResponsiveMargin"/>
-        <Input
-          value="{singleUser>/role}"
-          valueLiveUpdate="true"
-          width="60%"
+        <Select
+          id="selectRole"
           class="sapUiResponsiveMargin"
-          />
+          value="{singleUser>/role}"
+          valueLiveUpdate="true">
+          <core:Item key="" text="User" />
+          <core:Item key="" text="Administrator" />
+        </Select>
         <Label
           text="Password"
           class="sapUiResponsiveMargin"/>

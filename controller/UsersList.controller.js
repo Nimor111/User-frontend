@@ -35,6 +35,10 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/m/MessageToast'], function(
       const oView = this.getView();
       const oDialog = oView.byId('userDialog');
       const data = oView.getModel('singleUser').getData();
+      data.role = oView
+        .byId('selectRole')
+        .getSelectedItem()
+        .getProperty('text');
 
       if (data.password === null) {
         MessageToast.show('Please fill in a password!');
