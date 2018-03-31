@@ -14,7 +14,7 @@
               <Button
                 text="Add User"
                 press="onOpenCreateDialog"/>
-              <List 
+              <List
                 id="userList"
                 width="auto"
                 items="{users>/}">

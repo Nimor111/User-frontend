@@ -3,7 +3,7 @@
   xmlns:core="sap.ui.core">
   <Dialog
     id="userDialog"
-    title="Hello {singleUser>/firstName} {singleUser>/lastName}">
+    title="Hello {singleUser>/email}">
     <content>
       <Input
         value="{singleUser>/firstName}"
@@ -30,15 +30,16 @@
         class="sapUiResponsiveMargin"
         />
     </content>
-    <beginButton>
+    <buttons>
       <Button
         text="Close"
         press="onCloseDialog" />
-    </beginButton>
-    <endButton>
       <Button
-        text="Submit"
+        text="Delete"
+        press="onDeleteUser" />
+      <Button
+        text="Update"
         press="onSubmitForm" />
-    </endButton>
+    </buttons>
   </Dialog>
 </core:FragmentDefinition>

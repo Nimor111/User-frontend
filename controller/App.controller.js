@@ -20,7 +20,7 @@ sap.ui.define(
           lastName,
           email,
           role,
-          password: '',
+          password: null,
         });
         let oView = this.getView();
         let oDialog = this.byId('userDialog');
@@ -55,7 +55,7 @@ sap.ui.define(
         const oDialog = oView.byId('userDialog');
         const data = oModel.getData();
 
-        if (data.password == '') {
+        if (data.password == null) {
           sap.m.MessageToast.show('Please fill in a password!');
           return;
         }
@@ -91,7 +91,7 @@ sap.ui.define(
           .getSelectedItem()
           .getProperty('text');
 
-        if (data.email == '') {
+        if (data.email == null) {
           sap.m.MessageToast.show('Input an email!');
           return;
         }
@@ -118,10 +118,10 @@ sap.ui.define(
 
       onOpenCreateDialog: function() {
         const oViewModel = new JSONModel({
-          firstName: '',
-          lastName: '',
-          email: '',
-          role: '',
+          firstName: null,
+          lastName: null,
+          email: null,
+          role: null,
         });
         let oView = this.getView();
         let oDialog = this.byId('createDialog');
@@ -136,6 +136,31 @@ sap.ui.define(
 
         this.getView().setModel(oViewModel, 'newUser');
         oDialog.open();
+      },
+
+      onDeleteUser: function() {
+        console.log('Clicked delete');
+
+        const oView = this.getView();
+        const oModel = oView.getModel('singleUser');
+        const oDialog = oView.byId('userDialog');
+        const data = oModel.getData();
+
+        $.ajax({
+          type: 'DELETE',
+          url: 'http://localhost:8081/api/users/delete/' + data.email,
+          dataType: 'json',
+          contentType: 'application/json; charset=utf-8',
+          success: function() {
+            sap.m.MessageToast.show('User deleted');
+            oDialog.close();
+            oView.getModel('users').refresh();
+          },
+
+          error: function() {
+            sap.m.MessageToast.show('Error during deletion!');
+          },
+        });
       },
     });
   },
