@@ -11,8 +11,7 @@ sap.ui.define(
       init: function() {
         UIComponent.prototype.init.apply(this, arguments);
 
-        this.oUtils = new Utils(this.byId('app'));
-        this.oListUtils = new Utils(this.byId('usersListView'));
+        this.oUtils = new Utils();
       },
     });
   },

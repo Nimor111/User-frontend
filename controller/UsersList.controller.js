@@ -7,7 +7,7 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/m/MessageToast'], function(
   return Controller.extend('sap.ui.user.frontend.controller.UsersList', {
     onOpenDialog: function(oEvent) {
       const oItem = oEvent.getSource();
-      const oViewModel = this.getOwnerComponent().oListUtils.populateExistingUser(
+      const oViewModel = this.getOwnerComponent().oUtils.populateExistingUser(
         oItem,
       );
       let oView = this.getView();
@@ -26,7 +26,7 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/m/MessageToast'], function(
     },
 
     onCloseDialog: function() {
-      this.getOwnerComponent().oListUtils.closeDialog(
+      this.getOwnerComponent().oUtils.closeDialog(
         this.getView().byId('userDialog'),
       );
     },
