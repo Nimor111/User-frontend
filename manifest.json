@@ -12,7 +12,6 @@
         "type": "JSON"
       }
     }
-
   },
   "sap.ui": {
     "technology": "UI5",

@@ -14,23 +14,7 @@
               <Button
                 text="Add User"
                 press="onOpenCreateDialog"/>
-              <List
-                id="userList"
-                width="auto"
-                items="{users>/}">
-                <ObjectListItem
-                  title="{users>email}"
-                  type="Active"
-                  press="onOpenDialog"
-                  number="{
-                  parts:[{path: 'users>firstName'}, {path: 'users>lastName'}]
-                  }"
-                  >
-                  <firstStatus>
-                    <ObjectStatus id="userRole" text="{users>role}" />
-                  </firstStatus>
-                </ObjectListItem>
-              </List>
+              <mvc:XMLView viewName="sap.ui.user.frontend.view.UsersList" />
             </content>
           </Panel>
         </content>

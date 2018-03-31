@@ -5,30 +5,44 @@
     id="userDialog"
     title="Hello {singleUser>/email}">
     <content>
-      <Input
-        value="{singleUser>/firstName}"
-        valueLiveUpdate="true"
-        width="60%"
-        class="sapUiResponsiveMargin"
-        />
-      <Input
-        value="{singleUser>/lastName}"
-        valueLiveUpdate="true"
-        width="60%"
-        class="sapUiResponsiveMargin"
-        />
-      <Input
-        value="{singleUser>/role}"
-        valueLiveUpdate="true"
-        width="60%"
-        class="sapUiResponsiveMargin"
-        />
-      <Input
-        value="{singleUser>/password}"
-        valueLiveUpdate="true"
-        width="60%"
-        class="sapUiResponsiveMargin"
-        />
+      <VBox>
+        <Label
+          text="First name"
+          class="sapUiResponsiveMargin"/>
+        <Input
+          value="{singleUser>/firstName}"
+          valueLiveUpdate="true"
+          width="60%"
+          class="sapUiResponsiveMargin"
+          />
+        <Label
+          text="Last name"
+          class="sapUiResponsiveMargin"/>
+        <Input
+          value="{singleUser>/lastName}"
+          valueLiveUpdate="true"
+          width="60%"
+          class="sapUiResponsiveMargin"
+          />
+        <Label
+          text="Role"
+          class="sapUiResponsiveMargin"/>
+        <Input
+          value="{singleUser>/role}"
+          valueLiveUpdate="true"
+          width="60%"
+          class="sapUiResponsiveMargin"
+          />
+        <Label
+          text="Password"
+          class="sapUiResponsiveMargin"/>
+        <Input
+          value="{singleUser>/password}"
+          valueLiveUpdate="true"
+          width="60%"
+          class="sapUiResponsiveMargin"
+          />
+      </VBox>
     </content>
     <buttons>
       <Button
